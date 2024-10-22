@@ -1,5 +1,3 @@
-# NPOI Examples
-
 # Folders Explained
 |Folder Name| Description|
 |---|---|
