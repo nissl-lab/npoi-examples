@@ -75,6 +75,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AreaChart", "AreaChart\Area
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PieChart", "PieChart\PieChart.csproj", "{3F747A6D-398D-470E-BE13-4AB13513D817}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadSheetsByXSSFReader", "ReadSheetsByXSSFReader\ReadSheetsByXSSFReader.csproj", "{B5570D81-BDE8-9725-0222-8B523C97561A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -433,6 +435,18 @@ Global
 		{3F747A6D-398D-470E-BE13-4AB13513D817}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3F747A6D-398D-470E-BE13-4AB13513D817}.Release|x86.ActiveCfg = Release|Any CPU
 		{3F747A6D-398D-470E-BE13-4AB13513D817}.Release|x86.Build.0 = Release|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5570D81-BDE8-9725-0222-8B523C97561A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
