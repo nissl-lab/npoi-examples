@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateWordTableWithBulletLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSingleLineWithAlignments", "CreateSingleLineWithAlignments\CreateSingleLineWithAlignments.csproj", "{8BA414BE-C675-443B-9CA3-7C73909A1D64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterateTables", "IterateTables\IterateTables.csproj", "{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -283,6 +285,18 @@ Global
 		{8BA414BE-C675-443B-9CA3-7C73909A1D64}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8BA414BE-C675-443B-9CA3-7C73909A1D64}.Release|x86.ActiveCfg = Release|Any CPU
 		{8BA414BE-C675-443B-9CA3-7C73909A1D64}.Release|x86.Build.0 = Release|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Debug|x86.Build.0 = Debug|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2CF29881-0B24-4271-A7A3-40FC0BB2F80E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

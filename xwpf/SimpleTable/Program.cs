@@ -4,6 +4,7 @@
  * NPOI Examples: https://github.com/nissl-lab/npoi-examples
  * ==============================================================*/
 
+using NPOI.Util;
 using NPOI.XWPF.UserModel;
 using System.IO;
 
@@ -25,6 +26,7 @@ namespace SimpleTable
                 XWPFTable table = doc.CreateTable(3, 3);
 
                 table.GetRow(1).GetCell(1).SetText("EXAMPLE OF TABLE");
+
 
                 XWPFTableCell c1 = table.GetRow(0).GetCell(0);
                 XWPFParagraph p1 = c1.AddParagraph();   //don't use doc.CreateParagraph
