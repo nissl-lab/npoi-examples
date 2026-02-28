@@ -13,26 +13,15 @@ namespace CreateHyperlink
 {
     class Program
     {
-        static XWPFHyperlinkRun CreateHyperlinkRun(XWPFParagraph paragraph, String uri)
-        {
-            String rId = paragraph.Document.GetPackagePart().AddExternalRelationship(
-              uri,
-              XWPFRelation.HYPERLINK.Relation
-             ).Id;
-
-            return paragraph.CreateHyperlinkRun(rId);
-        }
         static void Main(string[] args)
         {
-
             using (XWPFDocument doc = new XWPFDocument())
             {
-
                 XWPFParagraph paragraph = doc.CreateParagraph();
                 XWPFRun run = paragraph.CreateRun();
                 run.SetText("This is a text paragraph having ");
 
-                XWPFHyperlinkRun hyperlinkrun = CreateHyperlinkRun(paragraph, "https://www.google.com");
+                var hyperlinkrun = paragraph.CreateHyperlinkRun("https://www.google.com");
                 hyperlinkrun.SetText("a link to Google");
                 hyperlinkrun.SetColor("0000FF");
                 hyperlinkrun.Underline =UnderlinePatterns.Single;
