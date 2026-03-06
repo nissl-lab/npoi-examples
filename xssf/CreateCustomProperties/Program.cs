@@ -10,18 +10,21 @@ namespace CreateCustomProperties
     {
         static void Main(string[] args)
         {
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet1 = workbook.CreateSheet("Sheet1");
+            using (XSSFWorkbook workbook = new XSSFWorkbook())
+            {
+                ISheet sheet1 = workbook.CreateSheet("Sheet1");
 
-            POIXMLProperties props = workbook.GetProperties();
-            props.CoreProperties.Creator = "NPOI 2.5.1";
-            props.CoreProperties.Created = DateTime.Now;
-            if (!props.CustomProperties.Contains("NPOI Team"))
-                props.CustomProperties.AddProperty("NPOI Team", "Hello World!");
+                POIXMLProperties props = workbook.GetProperties();
+                props.CoreProperties.Creator = "NPOI 2.5.1";
+                props.CoreProperties.Created = DateTime.Now;
+                if (!props.CustomProperties.Contains("NPOI Team"))
+                    props.CustomProperties.AddProperty("NPOI Team", "Hello World!");
 
-            FileStream sw = File.Create("test.xlsx");
-            workbook.Write(sw);
-            sw.Close();
+                using (FileStream sw = File.Create("test.xlsx"))
+                {
+                    workbook.Write(sw);
+                }
+            }
         }
     }
 }
