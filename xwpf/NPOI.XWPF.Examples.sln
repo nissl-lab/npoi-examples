@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterateTables", "IterateTab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateFieldRun", "CreateFieldRun\CreateFieldRun.csproj", "{469C757D-286C-4465-91DA-7059E8DB6CE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResizeEmbededPicture", "ResizeEmbededPicture\ResizeEmbededPicture.csproj", "{186FD505-F63A-730D-330A-2D57AA9E420B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -311,6 +313,18 @@ Global
 		{469C757D-286C-4465-91DA-7059E8DB6CE2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{469C757D-286C-4465-91DA-7059E8DB6CE2}.Release|x86.ActiveCfg = Release|Any CPU
 		{469C757D-286C-4465-91DA-7059E8DB6CE2}.Release|x86.Build.0 = Release|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Debug|x86.Build.0 = Debug|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Release|x86.ActiveCfg = Release|Any CPU
+		{186FD505-F63A-730D-330A-2D57AA9E420B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
