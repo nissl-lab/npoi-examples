@@ -47,9 +47,14 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NPOI">
-      <Version>2.6.2</Version>
-    </PackageReference>
+    <ProjectReference Include="..\..\..\tonyqus\npoi\main\NPOI.Core.csproj">
+      <Project>{0A9D4097-AE10-9F1D-196A-A29E905C9BA2}</Project>
+      <Name>NPOI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\tonyqus\npoi\ooxml\NPOI.OOXML.Core.csproj">
+      <Project>{f4595a6f-91c7-46dc-83c7-761875720c4a}</Project>
+      <Name>NPOI.OOXML.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
