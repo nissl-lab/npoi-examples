@@ -11,7 +11,7 @@ namespace BarChart
     {
         const int NUM_OF_ROWS = 10;
         const int NUM_OF_COLUMNS = 2;
-        private static void CreateChart(ISheet sheet, XSSFDrawing drawing, IClientAnchor anchor,  string serieTitle, int startDataRow, int endDataRow, int columnIndex)
+        private static void CreateChart(ISheet sheet, XSSFDrawing drawing, IClientAnchor anchor,  string serieTitle, int startDataRow, int endDataRow, int columnIndex, bool isColumnBar)
         {
             var chart = drawing.CreateChart(anchor);
             var legend = chart.GetOrAddLegend();
@@ -23,8 +23,9 @@ namespace BarChart
             leftAxis.Crosses = AxisCrosses.AutoZero;
             leftAxis.CrossBetween =AxisCrossBetween.Between;
 
-            var barChartData = chart.CreateData<string, double>(ChartTypes.BAR, bottomAxis, leftAxis);
-
+            var barChartData = chart.CreateData<string, double>(ChartTypes.BAR, bottomAxis, leftAxis) as XDDFBarChartData<string,double>;
+            if(isColumnBar)
+                barChartData.SetBarDirection(BarDirection.Col);
             var categoryAxis = XDDFDataSourcesFactory.FromStringCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, 0, 0));
             var valueAxis = XDDFDataSourcesFactory.FromNumericCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, columnIndex, columnIndex));
             var serie = barChartData.AddSeries(categoryAxis, valueAxis);
@@ -58,9 +59,12 @@ namespace BarChart
                     }
                 }
                 XSSFDrawing drawing = (XSSFDrawing)sheet.CreateDrawingPatriarch();
-                XSSFClientAnchor anchor = (XSSFClientAnchor)drawing.CreateAnchor(0, 0, 0, 0, 3, 3, 10, 12);
+                XSSFClientAnchor anchor1 = (XSSFClientAnchor)drawing.CreateAnchor(0, 0, 0, 0, 3, 3, 10, 12);
 
-                CreateChart(sheet, drawing, anchor, "s1", 0, 9, 1);
+                CreateChart(sheet, drawing, anchor1, "s1", 0, 9, 1, false);
+
+                XSSFClientAnchor anchor2 = (XSSFClientAnchor)drawing.CreateAnchor(0, 0, 0, 0, 3, 15, 10, 23);
+                CreateChart(sheet, drawing, anchor2, "s2", 0, 9, 1, true);
                 using (FileStream fs = File.Create("test.xlsx"))
                 {
                     wb.Write(fs, false);
