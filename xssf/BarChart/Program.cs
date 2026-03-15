@@ -11,7 +11,7 @@ namespace BarChart
     {
         const int NUM_OF_ROWS = 10;
         const int NUM_OF_COLUMNS = 2;
-        private static void CreateChart(ISheet sheet, XSSFDrawing drawing, IClientAnchor anchor,  string serieTitle, int startDataRow, int endDataRow, int columnIndex, bool isColumnBar)
+        private static void CreateChart(ISheet sheet, XSSFDrawing drawing, IClientAnchor anchor, string serieTitle, int startDataRow, int endDataRow, int columnIndex, bool isColumnBar)
         {
             var chart = drawing.CreateChart(anchor);
             var legend = chart.GetOrAddLegend();
@@ -21,11 +21,11 @@ namespace BarChart
             bottomAxis.MajorTickMark = AxisTickMark.None;
             var leftAxis = chart.CreateValueAxis(AxisPosition.Left);
             leftAxis.Crosses = AxisCrosses.AutoZero;
-            leftAxis.CrossBetween =AxisCrossBetween.Between;
+            leftAxis.CrossBetween = AxisCrossBetween.Between;
 
-            var barChartData = chart.CreateData<string, double>(ChartTypes.BAR, bottomAxis, leftAxis) as XDDFBarChartData<string,double>;
-            if(isColumnBar)
-                barChartData.SetBarDirection(BarDirection.Col);
+            var barChartData = chart.CreateData<string, double>(ChartTypes.BAR, bottomAxis, leftAxis) as XDDFBarChartData<string, double>;
+            if (isColumnBar)
+                barChartData.BarDirection = BarDirection.Col;
             var categoryAxis = XDDFDataSourcesFactory.FromStringCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, 0, 0));
             var valueAxis = XDDFDataSourcesFactory.FromNumericCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, columnIndex, columnIndex));
             var serie = barChartData.AddSeries(categoryAxis, valueAxis);
