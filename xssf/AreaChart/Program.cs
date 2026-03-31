@@ -36,18 +36,18 @@ var areaBottomAxis = axis.FirstOrDefault(x=>x.Position == AxisPosition.Bottom) a
 var areaLeftAxis = axis.FirstOrDefault(x=> x.Position == AxisPosition.Left) as XDDFValueAxis ??chart.CreateValueAxis(AxisPosition.Left);
 areaLeftAxis.CrossBetween =AxisCrossBetween.Between;
 
-var chartData = chart.CreateData<double, double>(ChartTypes.AREA, areaBottomAxis, areaLeftAxis) as XDDFAreaChartData<double, double>;;
+var chartData = chart.CreateData<string, double>(ChartTypes.AREA, areaBottomAxis, areaLeftAxis) as XDDFAreaChartData<string, double>;;
 
 var xSeries = new CellRangeAddress(header.RowNum, header.RowNum, 1, 4);
 var ySeries1 = new CellRangeAddress(row1.RowNum, row1.RowNum, 1, 4);
 var ySeries2 = new CellRangeAddress(row2.RowNum, row2.RowNum, 1, 4);
 
 var series1 = chartData.AddSeries(
-                XDDFDataSourcesFactory.FromNumericCellRange(worksheet, xSeries),
+                XDDFDataSourcesFactory.FromStringCellRange(worksheet, xSeries),
                 XDDFDataSourcesFactory.FromNumericCellRange(worksheet, ySeries1));
 
 var series2 = chartData.AddSeries(
-    XDDFDataSourcesFactory.FromNumericCellRange(worksheet, xSeries),
+    XDDFDataSourcesFactory.FromStringCellRange(worksheet, xSeries),
     XDDFDataSourcesFactory.FromNumericCellRange(worksheet, ySeries2));
 
 chart.Plot(chartData);
