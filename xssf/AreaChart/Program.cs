@@ -1,8 +1,5 @@
-﻿//This sample reference the code from https://github.com/artem-iron/AreaAndPieChartsExample/blob/master/AreaChartExample/Program.cs
-//AreaChart is available since NPOI 2.6.1
-
-using NPOI.SS.UserModel.Charts;
-using NPOI.SS.Util;
+﻿using NPOI.SS.Util;
+using NPOI.XDDF.UserModel.Chart;
 using NPOI.XSSF.UserModel;
 
 using var workbook = new XSSFWorkbook();
@@ -33,30 +30,27 @@ row2.CreateCell(3).SetCellValue(100);
 row2.CreateCell(4).SetCellValue(1000);
 
 var anchor = worksheet.DrawingPatriarch.CreateAnchor(0, 0, 0, 0, 0, 4, 10, 14);
-var chart = worksheet.DrawingPatriarch.CreateChart(anchor);
-var chartData = chart.ChartDataFactory.CreateAreaChartData<double, double>();
+var chart = ((XSSFDrawing)worksheet.DrawingPatriarch).CreateChart(anchor) ;
+var axis = chart.GetAxis();
+var areaBottomAxis = axis.FirstOrDefault(x=>x.Position == AxisPosition.Bottom) as XDDFCategoryAxis?? chart.CreateCategoryAxis(AxisPosition.Bottom);
+var areaLeftAxis = axis.FirstOrDefault(x=> x.Position == AxisPosition.Left) as XDDFValueAxis ??chart.CreateValueAxis(AxisPosition.Left);
+areaLeftAxis.CrossBetween =AxisCrossBetween.Between;
+
+var chartData = chart.CreateData<double, double>(ChartTypes.AREA, areaBottomAxis, areaLeftAxis) as XDDFAreaChartData<double, double>;;
 
 var xSeries = new CellRangeAddress(header.RowNum, header.RowNum, 1, 4);
 var ySeries1 = new CellRangeAddress(row1.RowNum, row1.RowNum, 1, 4);
 var ySeries2 = new CellRangeAddress(row2.RowNum, row2.RowNum, 1, 4);
 
 var series1 = chartData.AddSeries(
-                DataSources.FromNumericCellRange(worksheet, xSeries),
-                DataSources.FromNumericCellRange(worksheet, ySeries1));
+                XDDFDataSourcesFactory.FromNumericCellRange(worksheet, xSeries),
+                XDDFDataSourcesFactory.FromNumericCellRange(worksheet, ySeries1));
 
 var series2 = chartData.AddSeries(
-                DataSources.FromNumericCellRange(worksheet, xSeries),
-                DataSources.FromNumericCellRange(worksheet, ySeries2));
+    XDDFDataSourcesFactory.FromNumericCellRange(worksheet, xSeries),
+    XDDFDataSourcesFactory.FromNumericCellRange(worksheet, ySeries2));
 
-var axis = chart.GetAxis();
-var areaBottomAxis = axis.FirstOrDefault(x => x.Position == AxisPosition.Bottom) ??
-                                chart.ChartAxisFactory.CreateCategoryAxis(AxisPosition.Bottom);
-var areaLeftAxis = axis.FirstOrDefault(x => x.Position == AxisPosition.Left) ??
-                            chart.ChartAxisFactory.CreateValueAxis(AxisPosition.Left);
-
-((IValueAxis)areaLeftAxis).SetCrossBetween(AxisCrossBetween.Between);
-
-chart.Plot(chartData, areaBottomAxis, areaLeftAxis);
+chart.Plot(chartData);
 
 using (var stream = new FileStream("areaChart.xlsx", FileMode.Create, FileAccess.Write))
 {
