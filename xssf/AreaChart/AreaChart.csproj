@@ -6,7 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-   <ItemGroup>
-		<ProjectReference Include="..\..\..\tonyqus\npoi\ooxml\NPOI.OOXML.Core.csproj" />
-   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NPOI">
+      <Version>2.8.0-preview2</Version>
+    </PackageReference>
+  </ItemGroup>
 </Project>
