@@ -8,11 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NPOI" Version="2.8.0" />
+    <ProjectReference Include="..\..\..\tonyqus\npoi\ooxml\NPOI.OOXML.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Sample.xlsx">
+    <None Update="bar-chart-template.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="bar-chart-data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

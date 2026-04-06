@@ -1,6 +1,6 @@
 ﻿using NPOI.SS.UserModel;
-using NPOI.SS.UserModel.Charts;
 using NPOI.SS.Util;
+using NPOI.XDDF.UserModel.Chart;
 using NPOI.XSSF.UserModel;
 using System;
 using System.IO;
@@ -11,27 +11,27 @@ namespace BarChart
     {
         const int NUM_OF_ROWS = 10;
         const int NUM_OF_COLUMNS = 2;
-        private static void CreateChart(ISheet sheet, IDrawing drawing, IClientAnchor anchor,  string serieTitle, int startDataRow, int endDataRow, int columnIndex)
+        private static void CreateChart(ISheet sheet, XSSFDrawing drawing, IClientAnchor anchor, string serieTitle, int startDataRow, int endDataRow, int columnIndex, bool isColumnBar)
         {
-            XSSFChart chart = (XSSFChart)drawing.CreateChart(anchor);
-
-            IBarChartData<string, double> barChartData = chart.ChartDataFactory.CreateBarChartData<string, double>();
-            IChartLegend legend = chart.GetOrCreateLegend();
+            var chart = drawing.CreateChart(anchor);
+            var legend = chart.GetOrAddLegend();
             legend.Position = LegendPosition.Bottom;
 
-            IChartAxis bottomAxis = chart.ChartAxisFactory.CreateCategoryAxis(AxisPosition.Bottom);
+            var bottomAxis = chart.CreateCategoryAxis(AxisPosition.Bottom);
             bottomAxis.MajorTickMark = AxisTickMark.None;
-            IValueAxis leftAxis = chart.ChartAxisFactory.CreateValueAxis(AxisPosition.Left);
+            var leftAxis = chart.CreateValueAxis(AxisPosition.Left);
             leftAxis.Crosses = AxisCrosses.AutoZero;
-            leftAxis.SetCrossBetween(AxisCrossBetween.Between);
+            leftAxis.CrossBetween = AxisCrossBetween.Between;
 
-
-            IChartDataSource<string> categoryAxis = DataSources.FromStringCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, 0, 0));
-            IChartDataSource<double> valueAxis = DataSources.FromNumericCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, columnIndex, columnIndex));
+            var barChartData = chart.CreateData<string, double>(ChartTypes.BAR, bottomAxis, leftAxis) as XDDFBarChartData<string, double>;
+            if (isColumnBar)
+                barChartData.BarDirection = BarDirection.Col;
+            var categoryAxis = XDDFDataSourcesFactory.FromStringCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, 0, 0));
+            var valueAxis = XDDFDataSourcesFactory.FromNumericCellRange(sheet, new CellRangeAddress(startDataRow, endDataRow, columnIndex, columnIndex));
             var serie = barChartData.AddSeries(categoryAxis, valueAxis);
             serie.SetTitle(serieTitle);
 
-            chart.Plot(barChartData, bottomAxis, leftAxis);
+            chart.Plot(barChartData);
         }
         static void Main(string[] args)
         {
@@ -59,9 +59,12 @@ namespace BarChart
                     }
                 }
                 XSSFDrawing drawing = (XSSFDrawing)sheet.CreateDrawingPatriarch();
-                XSSFClientAnchor anchor = (XSSFClientAnchor)drawing.CreateAnchor(0, 0, 0, 0, 3, 3, 10, 12);
+                XSSFClientAnchor anchor1 = (XSSFClientAnchor)drawing.CreateAnchor(0, 0, 0, 0, 3, 3, 10, 12);
 
-                CreateChart(sheet, drawing, anchor, "s1", 0, 9, 1);
+                CreateChart(sheet, drawing, anchor1, "s1", 0, 9, 1, false);
+
+                XSSFClientAnchor anchor2 = (XSSFClientAnchor)drawing.CreateAnchor(0, 0, 0, 0, 3, 15, 10, 23);
+                CreateChart(sheet, drawing, anchor2, "s2", 0, 9, 1, true);
                 using (FileStream fs = File.Create("test.xlsx"))
                 {
                     wb.Write(fs, false);

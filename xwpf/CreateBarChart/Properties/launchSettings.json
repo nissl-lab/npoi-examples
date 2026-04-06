@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CreateBarChart": {
+      "commandName": "Project",
+      "commandLineArgs": "bar-chart-template.docx bar-chart-data.txt"
+    }
+  }
+}
