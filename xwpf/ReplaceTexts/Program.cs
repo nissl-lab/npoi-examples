@@ -45,24 +45,12 @@ namespace ReplaceTexts
             using (var rs = File.OpenRead(template))
             {
                 var generateFile = @"output1.docx";
-                using (var doc = new XWPFDocument(rs))
+                using var doc = new XWPFDocument(rs);
+                //doc.FindAndReplaceText("{yushouzzmj}", "Test");   
+                using (var ws = File.Create(generateFile))
                 {
-                    foreach (var para in doc.Paragraphs)
-                    {
-                        foreach (var placeholder in placeHolderDictionary)
-                        {
-                            if (para.ParagraphText.Contains(placeholder))
-                            {
-                                para.ReplaceText(placeholder, "Nissl");
-                            }
-                        }
-                    }
-                    using (var ws = File.Create(generateFile))
-                    {
-                        doc.Write(ws);
-                    }
+                    doc.Write(ws);
                 }
-                //you can use XWPFDocument.FindAndReplaceText method since NPOI 2.6.1
             }
         }
     }
