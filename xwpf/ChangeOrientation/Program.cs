@@ -1,6 +1,7 @@
 ﻿using NPOI.XWPF.UserModel;
 using System;
 using System.IO;
+using NPOI.OpenXmlFormats.Wordprocessing;
 
 namespace ChangeOrientation
 {
@@ -8,16 +9,15 @@ namespace ChangeOrientation
     {
         static void Main(string[] args)
         {
-            XWPFDocument doc = new XWPFDocument();
+            using XWPFDocument doc = new XWPFDocument();
 
             var run = doc.CreateParagraph().CreateRun();
             run.SetText("Hello World!");
 
-            doc.ChangeOrientation(NPOI.OpenXmlFormats.Wordprocessing.ST_PageOrientation.landscape);
+            doc.ChangeOrientation(ST_PageOrientation.landscape);
             using (FileStream fs = new FileStream("test.docx", FileMode.Create))
             {
                 doc.Write(fs);
-                doc.Close();
             }
         }
     }

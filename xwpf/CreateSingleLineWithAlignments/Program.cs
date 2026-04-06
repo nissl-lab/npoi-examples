@@ -5,7 +5,6 @@
  * ==============================================================*/
 
 using NPOI.XWPF.UserModel;
-using SixLabors.ImageSharp.PixelFormats;
 using System.IO;
 
 namespace CreateSingleLineWithAlignments
