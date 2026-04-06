@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NPOI" Version="2.8.0-preview1" />
+    <PackageReference Include="NPOI" Version="2.8.0" />
   </ItemGroup>
 
 </Project>

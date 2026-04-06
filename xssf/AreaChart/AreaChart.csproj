@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="NPOI">
-      <Version>2.8.0-preview2</Version>
+      <Version>2.8.0</Version>
     </PackageReference>
   </ItemGroup>
 </Project>
