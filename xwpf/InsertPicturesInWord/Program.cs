@@ -4,7 +4,7 @@
  * NPOI Examples: https://github.com/nissl-lab/npoi-examples
  * ==============================================================*/
 
-using NPOI.XWPF.UserModel;
+using  NPOI.XWPF.UserModel;
 using System.IO;
 
 namespace InsertPicturesInWord
